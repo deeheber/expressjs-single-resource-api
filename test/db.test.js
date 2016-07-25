@@ -6,7 +6,7 @@ const category = 'books';
 const id = '2';
 
 function expectedError() {
-  throw new Error('Resource not found.');
+  throw new Error(JSON.stringify('Resource not found'));
 }
 
 describe('database', ()=>{

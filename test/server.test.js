@@ -30,40 +30,40 @@ describe('server', ()=>{
 
   it('errors on a note id that is not a number', done=>{
     request.get('/notes/foo')
-      .end((error, response)=>{
-        assert.equal(response.text, 'Resource not found.');
+      .end((error)=>{
+        assert.equal(error.status, 400);
         done();
       });
   });
 
   it('errors on a note that does not exist', done=>{
     request.get('/notes/400')
-      .end((error, response)=>{
-        assert.equal(response.text, 'Resource not found.');
+      .end((error)=>{
+        assert.equal(error.status, 400);
         done();
       });
   });
 
   it('Error 400 on invalid category', done=>{
     request.get('/fakepage')
-      .end((error, response)=>{
-        assert.equal(response.status, 400);
+      .end((error)=>{
+        assert.equal(error.status, 400);
         done();
       });
   });
 
   it('Error 400 on invalid item', done=>{
     request.get('/fakepage/23')
-      .end((error, response)=>{
-        assert.equal(response.status, 400);
+      .end((error)=>{
+        assert.equal(error.status, 400);
         done();
       });
   });
 
   it('Error 400 on non GET request', done=>{
     request.post('/notes')
-      .end((error, response)=>{
-        assert.equal(response.status, 400);
+      .end((error)=>{
+        assert.equal(error.status, 400);
         done();
       });
   });
