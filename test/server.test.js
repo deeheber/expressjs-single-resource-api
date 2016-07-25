@@ -60,8 +60,8 @@ describe('server', ()=>{
       });
   });
 
-  it('Error 404 on non GET request', done=>{
-    request.post('/notes')
+  it('Error 404 on PUT request', done=>{
+    request.put('/notes')
       .end((error)=>{
         assert.equal(error.status, 404);
         done();

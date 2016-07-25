@@ -13,7 +13,7 @@ describe('database', ()=>{
   it('gets all books', done=>{
     db.fetchAll(category, (error, result)=>{
       if (error) return done(error);
-      assert.equal(JSON.parse(result).length, 4);
+      assert.equal(result.length, 4);
       done();
     });
   });
@@ -21,7 +21,7 @@ describe('database', ()=>{
   it('gets book 2', done=>{
     db.fetchItem(category, id, (error, result)=>{
       if (error) return done(error);
-      assert.deepEqual(JSON.parse(result), books[1]);
+      assert.deepEqual(result, books[1]);
       done();
     });
   });
