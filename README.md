@@ -11,14 +11,15 @@ This is an http server that acts as a simple data store, backed by in-memory sto
 ### Possible calls with current data
 `GET`/notes returns all notes
 `GET`/notes/:idNumber returns the note that has that id if it exists
+`POST`/notes adds a valid JSON object to notes
+`PUT`/notes/:idNumber updates the selected note if valid JSON
+`DELETE`/notes/:idNumber deletes the selected note
 
 `GET`/books returns all books
 `GET`/books/:idNumber returns the book that has that id if it exists
-
-### Here's a sneak peek of new options version 2.0
-`POST`
-`PUT`
-`DELETE`
+`POST`/books adds a valid JSON object to books
+`PUT`/books/:idNumber updates the selected book if valid JSON
+`DELETE`/books/:idNumber deletes the selected book
 
 ### Ways to contribute
 - Report any bugs or feature requests by opening up a new GitHub issue

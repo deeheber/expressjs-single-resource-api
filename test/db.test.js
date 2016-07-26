@@ -53,6 +53,18 @@ describe('database', ()=>{
     });
   });
 
+  it('updates book 2', done=>{
+
+    const item = books[1];
+    const receivedData = { 'title': 'update to book 2'};
+
+    db.update(category, id, item, receivedData,  (error, result)=>{
+      if (error) return done(error);
+      assert.equal(result, 'Success');
+      done();
+    });
+  });
+
   it('deletes book 2', done=>{
 
     db.delete(category, id, (error)=>{
