@@ -41,4 +41,24 @@ describe('database', ()=>{
       done();
     });
   });
+
+  it('posts an item to books', done=>{
+
+    const item = { 'noteBody': 'testing this out'};
+
+    db.add(category, item, (error)=>{
+      if (error) return done(error);
+      assert.equal(books.length, 5);
+      done();
+    });
+  });
+
+  it('deletes book 2', done=>{
+
+    db.delete(category, id, (error)=>{
+      if (error) return done(error);
+      assert.equal(books.length, 4);
+      done();
+    });
+  });
 });
