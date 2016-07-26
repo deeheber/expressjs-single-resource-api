@@ -60,7 +60,7 @@ describe('server', ()=>{
       });
   });
 
-  it('Error 404 on PUT request', done=>{
+  it('Error 404 on PUT request for an entire category', done=>{
     request.put('/notes')
       .end((error)=>{
         assert.equal(error.status, 404);
