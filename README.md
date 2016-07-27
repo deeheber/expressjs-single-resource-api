@@ -1,21 +1,21 @@
-# expressjs-single-resource-api
+# express-mongo-rest-api
 
-This is an http server that acts as a simple data store, backed by in-memory storage objects that can be found in `data.js`.
+This is an http server that acts as a data store, backed by Mongo DB with communcation by Mongoose.
 
 ### Directions to run
 1. run `npm install` from the command line
-1. `npm start` will start the server
-2. open your browser to `localhost:8000` or use an application like [Postman](https://www.getpostman.com/)
-3. enter a possible call from below
+2. `npm start` will start the server
+3. use an application like [Postman](https://www.getpostman.com/) to make calls to the API
 
-### Possible calls with current data
+### API Calls
 - `GET`/api/notes returns all notes
-- `GET`/api/notes/:idNumber returns the note that has that id if it exists
-- `POST`/api/notes adds a valid JSON object to notes
-- `PUT`/api/notes/:idNumber updates the selected note if valid JSON
-- `DELETE`/api/notes/:idNumber deletes the selected notes
+- `GET`/api/notes/:id
+- `POST`/api/notes
+- `PUT`/api/notes/:id
+- `DELETE`/api/notes/:id deletes the selected notes
 
-also works if you replace `notes` with `books` i.e. `GET`/books returns all books
+`GET` will only return items if they exist in the database
+`POST` and `PUT` requests must be valid JSON.
 
 ### Ways to contribute
 - Report any bugs or feature requests by opening up a new GitHub issue

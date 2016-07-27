@@ -1,6 +1,11 @@
 # Change log
 All notable changes to this project will be documented in this file
 
+## 3.0.0 - 2016-07-27
+Added
+- Mongo DB stores objects
+- Mongoose commands to query the database
+
 ## 2.1.0 - 2016-07-26
 Added
 - Middleware for error handling
