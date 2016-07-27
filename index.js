@@ -1,12 +1,9 @@
-//const server = require('./lib/server');
-
 const app = require('./lib/app');
 const http = require('http');
+const port = process.env.PORT || 3000;
 
 const server = http.createServer(app);
 
-server.listen('8000', ()=>{
+server.listen(port, ()=>{
   console.log('server started on ', server.address().port);
 });
-
-module.exports.server = server;
