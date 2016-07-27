@@ -2,10 +2,11 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const assert = require('chai').assert;
 const app = require('../lib/app');
+const connection = require('../lib/setup-mongoose');
 
 chai.use(chaiHttp);
 
-describe('app', ()=>{
+describe('note api', ()=>{
 
   const request = chai.request(app);
 
