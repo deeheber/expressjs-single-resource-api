@@ -44,27 +44,4 @@ describe('app', ()=>{
       });
   });
 
-  it('Error 400 on invalid category', done=>{
-    request.get('/api/fakecategory')
-      .end((error)=>{
-        assert.equal(error.status, 400);
-        done();
-      });
-  });
-
-  it('Error 400 on invalid item', done=>{
-    request.get('/api/fakecategory/23')
-      .end((error)=>{
-        assert.equal(error.status, 400);
-        done();
-      });
-  });
-
-  it('Error 404 on PUT request for an entire category', done=>{
-    request.put('/api/notes')
-      .end((error)=>{
-        assert.equal(error.status, 404);
-        done();
-      });
-  });
 });
