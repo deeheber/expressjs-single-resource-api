@@ -1,7 +1,7 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const assert = require('chai').assert;
-const server = require('../lib/server');
+const server = require('../index').server;
 const data = require('../data');
 
 chai.use(chaiHttp);
