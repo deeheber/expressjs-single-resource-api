@@ -52,5 +52,15 @@ describe('note api', ()=>{
       .catch(done);
   });
 
+  it('gets note 1 by id', done=>{
+    request.get(`/api/notes/${note1._id}`)
+      .then(res =>{
+        const note = res.body;
+        assert.deepEqual(note, note1);
+        done();
+      })
+      .catch(done);
+  });
+
   after(done => connection.close(done));
 });
