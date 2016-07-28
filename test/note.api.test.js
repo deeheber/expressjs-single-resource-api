@@ -62,5 +62,14 @@ describe('note api', ()=>{
       .catch(done);
   });
 
+  it('deletes note 1', done=>{
+    request.delete(`/api/notes/${note1._id}`)
+      .then(res =>{
+        assert.equal(res.body, 'Item deleted');
+        done();
+      })
+      .catch(done);
+  });
+
   after(done => connection.close(done));
 });
