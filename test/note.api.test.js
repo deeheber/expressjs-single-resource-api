@@ -62,10 +62,22 @@ describe('note api', ()=>{
       .catch(done);
   });
 
+  const update = { title: 'New Note 1', body: 'stuff', important: false };
+
+  it('updates note 1', done=>{
+    request.put(`/api/notes/${note1._id}`)
+      .send(update)
+      .then(res =>{
+        assert.equal(res.body, 'Note updated');
+        done();
+      })
+      .catch(done);
+  });
+
   it('deletes note 1', done=>{
     request.delete(`/api/notes/${note1._id}`)
       .then(res =>{
-        assert.equal(res.body, 'Item deleted');
+        assert.equal(res.body, 'Note deleted');
         done();
       })
       .catch(done);
