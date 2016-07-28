@@ -7,17 +7,17 @@ const connection = require('../lib/setup-mongoose');
 const app = require('../lib/app');
 
 
-describe('note api', ()=>{
+describe('api e2e', ()=>{
 
   before(done => {
 
     const name = 'notes';
-    connection.on( 'open', () => {
+    connection.on('open', () => {
       connection.db
       .listCollections({ name })
       .next( (err, collinfo) => {
         if (!collinfo) return done();
-        connection.db.dropCollection( name, done );
+        connection.db.dropCollection(name, done);
       });
     });
   });
