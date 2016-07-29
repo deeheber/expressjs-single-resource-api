@@ -25,6 +25,7 @@ describe('api e2e', ()=>{
   const request = chai.request(app);
 
   describe('note api', ()=>{
+
     const note1 = {
       title: 'note1',
       body: 'note 1 body',
@@ -66,7 +67,7 @@ describe('api e2e', ()=>{
         .catch(done);
     });
 
-    const update = { title: 'New Note 1', body: 'stuff', important: false };
+    const update = {title: 'New Note 1', body: 'stuff', important: false};
 
     it('updates note 1', done=>{
       request.put(`/api/notes/${note1._id}`)
@@ -90,12 +91,68 @@ describe('api e2e', ()=>{
 
   describe('user api', ()=>{
 
-    it('test user test', done=>{
-      assert(1, 1);
-      done();
+    const user1 = {
+      username: 'username_1',
+      email: 'testUser@aol.com'
+    };
+
+    it('adds user 1', done=>{
+      request.post('/api/users')
+        .send(user1)
+        .then(res =>{
+          const user = res.body;
+          assert.ok(user._id);
+          user1.__v = 0;
+          user1._id = user._id;
+          done();
+        })
+        .catch(done);
     });
-    
+
+    it('gets all user profiles', done=>{
+      request.get('/api/users')
+        .then(res => {
+          assert.include(res.body, user1);
+          done();
+        })
+        .catch(done);
+    });
+
+    it('gets user 1 by id', done=>{
+      request.get(`/api/users/${user1._id}`)
+        .then(res =>{
+          const user = res.body;
+          assert.deepEqual(user, user1);
+          done();
+        })
+        .catch(done);
+    });
+
+    const update = {username: 'newUser1', email: 'user1@gmail.com'};
+
+    it('updates user 1', done=>{
+      request.put(`/api/users/${user1._id}`)
+        .send(update)
+        .then(res =>{
+          assert.equal(res.body, 'User profile updated');
+          done();
+        })
+        .catch(done);
+    });
+
+    it('deletes user 1', done=>{
+      request.delete(`/api/users/${user1._id}`)
+        .then(res =>{
+          assert.equal(res.body, 'User deleted');
+          done();
+        })
+        .catch(done);
+    });
+
   });
 
-  after(done => connection.close(done));
+  //after(done => connection.close(done));
+  after(done=> connection.db.dropCollection('users', function(){
+    connection.close(done);
+  }));
 });
