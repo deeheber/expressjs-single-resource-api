@@ -90,61 +90,61 @@ describe('api e2e', ()=>{
     });
   });
 
-  describe('user api', ()=>{
+  describe('author api', ()=>{
 
-    const user1 = {
-      username: 'username_1',
-      email: 'testUser@aol.com'
+    const author1 = {
+      name: 'authorname_1',
+      email: 'testAuthor@aol.com'
     };
 
-    it('adds user 1', done=>{
-      request.post('/api/users')
-        .send(user1)
+    it('adds author 1', done=>{
+      request.post('/api/authors')
+        .send(author1)
         .then(res =>{
-          const user = res.body;
-          assert.ok(user._id);
-          user1.__v = 0;
-          user1._id = user._id;
+          const author = res.body;
+          assert.ok(author._id);
+          author1.__v = 0;
+          author1._id = author._id;
           done();
         })
         .catch(done);
     });
 
-    it('gets all user profiles', done=>{
-      request.get('/api/users')
+    it('gets all author profiles', done=>{
+      request.get('/api/authors')
         .then(res => {
-          assert.include(res.body, user1);
+          assert.include(res.body, author1);
           done();
         })
         .catch(done);
     });
 
-    it('gets user 1 by id', done=>{
-      request.get(`/api/users/${user1._id}`)
+    it('gets author 1 by id', done=>{
+      request.get(`/api/authors/${author1._id}`)
         .then(res =>{
-          const user = res.body;
-          assert.deepEqual(user, user1);
+          const author = res.body;
+          assert.deepEqual(author, author1);
           done();
         })
         .catch(done);
     });
 
-    const update = {username: 'newUser1', email: 'user1@gmail.com'};
+    const update = {name: 'newAuthor1', email: 'author1@gmail.com'};
 
-    it('updates user 1', done=>{
-      request.put(`/api/users/${user1._id}`)
+    it('updates author 1', done=>{
+      request.put(`/api/authors/${author1._id}`)
         .send(update)
         .then(res =>{
-          assert.equal(res.body, 'User profile updated');
+          assert.equal(res.body, 'Author profile updated');
           done();
         })
         .catch(done);
     });
 
-    it('deletes user 1', done=>{
-      request.delete(`/api/users/${user1._id}`)
+    it('deletes author 1', done=>{
+      request.delete(`/api/authors/${author1._id}`)
         .then(res =>{
-          assert.equal(res.body, 'User deleted');
+          assert.equal(res.body, 'Author deleted');
           done();
         })
         .catch(done);
