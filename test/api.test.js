@@ -10,15 +10,8 @@ const app = require('../lib/app');
 describe('api e2e', ()=>{
 
   before(done => {
-
-    const name = 'notes';
     connection.on('open', () => {
-      connection.db
-      .listCollections({ name })
-      .next( (err, collinfo) => {
-        if (!collinfo) return done();
-        connection.db.dropCollection(name, done);
-      });
+      connection.db.dropDatabase(done);
     });
   });
 
@@ -159,7 +152,5 @@ describe('api e2e', ()=>{
 
   });
 
-  after(done=> connection.db.dropCollection('users', function(){
-    connection.close(done);
-  }));
+  after(done=> connection.close(done));
 });
