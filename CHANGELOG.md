@@ -1,9 +1,9 @@
 # Change log
 All notable changes to this project will be documented in this file
 
-## 3.1.0 - 2016-07-30
+## 3.1.0 - 2016-07-29
 Added
-- Non CRUD endpoint that returns notes marked as important
+- Non CRUD endpoint query that returns notes marked as important
 - CRUD endpoints for /api/users
 
 ## 3.0.0 - 2016-07-27

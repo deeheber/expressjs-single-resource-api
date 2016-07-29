@@ -14,7 +14,7 @@ This is an http server that stores data in MongoDB using Mongoose.
 # Notes
 - `GET /api/notes` returns all notes
 - `GET /api/notes/:id` returns a note by id
-- `GET /api/notes/important` returns all notes marked important
+- `GET api/notes?important=true` returns all notes marked important
 - `POST /api/notes` adds a note
 - `PUT /api/notes/:id` updates a note
 - `DELETE /api/notes/:id` deletes the selected notes

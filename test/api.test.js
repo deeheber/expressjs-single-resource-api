@@ -67,7 +67,7 @@ describe('api e2e', ()=>{
     });
 
     it('gets notes marked important', done=>{
-      request.get('/api/notes/important')
+      request.get('/api/notes?important=true')
         .then(res=>{
           assert.equal(res.body.length, 1);
           done();
@@ -159,7 +159,6 @@ describe('api e2e', ()=>{
 
   });
 
-  //after(done => connection.close(done));
   after(done=> connection.db.dropCollection('users', function(){
     connection.close(done);
   }));
