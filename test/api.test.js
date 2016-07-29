@@ -60,8 +60,16 @@ describe('api e2e', ()=>{
     it('gets note 1 by id', done=>{
       request.get(`/api/notes/${note1._id}`)
         .then(res =>{
-          const note = res.body;
-          assert.deepEqual(note, note1);
+          assert.deepEqual(res.body, note1);
+          done();
+        })
+        .catch(done);
+    });
+
+    it('gets notes marked important', done=>{
+      request.get('/api/notes/important')
+        .then(res=>{
+          assert.equal(res.body.length, 1);
           done();
         })
         .catch(done);
