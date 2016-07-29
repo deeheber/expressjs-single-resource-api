@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file
 
 ## 3.2.0 - 2016-07-29
 Changed
-- User model to Authors to prep for future releases that include user login
+- User model changed Authors to prep for future releases that include user login/management
 
 ## 3.1.0 - 2016-07-28
 Added
