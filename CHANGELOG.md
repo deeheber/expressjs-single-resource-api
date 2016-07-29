@@ -1,7 +1,11 @@
 # Change log
 All notable changes to this project will be documented in this file
 
-## 3.1.0 - 2016-07-29
+## 3.2.0 - 2016-07-29
+Changed
+- User model to Authors to prep for future releases that include user login
+
+## 3.1.0 - 2016-07-28
 Added
 - Non CRUD endpoint query that returns notes marked as important
 - CRUD endpoints for /api/users
@@ -15,7 +19,7 @@ Added
 Added
 - Middleware for error handling
 - Middleware for incoming JSON data on PUT and POST requests
-- Routes seperate from the main app
+- Routes separated from the main app
 
 ## 2.0.0 - 2016-07-25
 Added

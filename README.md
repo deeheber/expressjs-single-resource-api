@@ -1,6 +1,6 @@
 # express-mongo-rest-api
 
-This is an http server that stores data in MongoDB using Mongoose.
+This is an http server that stores notes and author data in MongoDB using Mongoose.
 
 ### Directions to use
 1. `npm install` from the command line
@@ -8,6 +8,9 @@ This is an http server that stores data in MongoDB using Mongoose.
 3.  Start the database `mongod --dbpath [path to your MongoDB folder here]`
 4.  Start the server by running `npm start`  
 5. use an application like [Postman](https://www.getpostman.com/) to make calls to the API
+
+### Data Model
+An author can write multiple notes, but a note can only have a single author.
 
 ### API Calls
 
@@ -19,16 +22,19 @@ This is an http server that stores data in MongoDB using Mongoose.
 - `PUT /api/notes/:id` updates a note
 - `DELETE /api/notes/:id` deletes the selected notes
 
-# Users
-- `GET /api/users` returns all users
-- `GET /api/users/:id` returns a user by id
-- `POST /api/users` adds a note
-- `PUT /api/users/:id` updates a user
-- `DELETE /api/users/:id` deletes the selected user
+# Authors
+- `GET /api/authors` returns all authors
+- `GET /api/authors/:id` returns an author by id
+- `POST /api/authors` adds an author
+- `PUT /api/authors/:id` updates an author
+- `DELETE /api/authors/:id` deletes the selected author
 
 # Misc things to keep in mind
 - `GET` will only return items if they exist in the database
 - `POST` and `PUT` requests must be valid JSON.
+
+### Coming soon
+- Authentication and user management
 
 ### Ways to contribute
 - Report any bugs or feature requests by opening up a new GitHub issue
