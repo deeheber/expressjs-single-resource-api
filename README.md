@@ -9,8 +9,11 @@ This is an http server that stores notes and author data in MongoDB using Mongoo
 4.  Start the server by running `npm start`  
 5. use an application like [Postman](https://www.getpostman.com/) to make calls to the API
 
-### Data Model
-An author can write multiple notes, but a note can only have a single author.
+### Data model info
+- One to many relationship between authors(parent) and notes(children)
+- An author can write many notes, and a note can have up to one author.
+- Notes without an author are considered written by someone that wishes to remain anonymous
+- New notes are anonymous by default
 
 ### API Calls
 
@@ -29,9 +32,13 @@ An author can write multiple notes, but a note can only have a single author.
 - `PUT /api/authors/:id` updates an author
 - `DELETE /api/authors/:id` deletes the selected author
 
+# Author and Note relationship
+- `PUT /api/authors/:authorId/notes/:noteId` adds an author to a note
+- `DELETE /api/authors/null/notes/:noteId` removes the author from a note
+
 # Misc things to keep in mind
 - `GET` will only return items if they exist in the database
-- `POST` and `PUT` requests must be valid JSON.
+- `POST` and `PUT` request bodies must be valid JSON.
 
 ### Coming soon
 - Authentication and user management

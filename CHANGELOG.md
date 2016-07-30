@@ -1,6 +1,11 @@
 # Change log
 All notable changes to this project will be documented in this file
 
+## 3.3.0 - 2016-07-30
+Added
+- Parent child relationship between Author(parent) and Notes(children)
+- PUT and DELETE api calls to add/remove relationships
+
 ## 3.2.0 - 2016-07-29
 Changed
 - User model changed Authors to prep for future releases that include user login/management

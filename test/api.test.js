@@ -156,6 +156,71 @@ describe('api e2e', ()=>{
         .catch(done);
     });
 
+
+  });
+
+  describe('relationship api', ()=>{
+    //db is cleared out at this point, so adding more test data
+    const note2 = {
+      title: 'note2',
+      body: 'note 2 body'
+    };
+
+    const author2 = {
+      name: 'Author 2',
+      email: 'email@testing.com'
+    };
+
+    it('adds note2', done=>{
+      request.post('/api/notes')
+        .send(note2)
+        .then(res =>{
+          const note = res.body;
+          assert.ok(note._id);
+          note2.__v = 0;
+          note2._id = note._id;
+          done();
+        })
+        .catch(done);
+    });
+
+    it('adds author2', done=>{
+      request.post('/api/authors')
+        .send(author2)
+        .then(res =>{
+          const author = res.body;
+          assert.ok(author._id);
+          author2.__v = 0;
+          author2._id = author._id;
+          done();
+        })
+        .catch(done);
+    });
+
+    it('author2 wrote note2', done=>{
+      request.put(`/api/authors/${author2._id}/notes/${note2._id}`)
+        .send()
+        .then(res =>{
+          note2.authorId = author2._id;
+          note2.important = false;
+          const note = res.body;
+          assert.deepEqual(note, note2);
+          done();
+        })
+        .catch(done);
+    });
+
+    it('removes author2 id from note2', done=>{
+      request.delete(`/api/authors/null/notes/${note2._id}`)
+        .then(res =>{
+          delete note2['authorId'];
+          const note = res.body;
+          assert.equal(note.authorId, note2.authorId);
+          done();
+        })
+        .catch(done);
+    });
+
   });
 
   after(done=> connection.close(done));
