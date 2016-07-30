@@ -74,7 +74,11 @@ describe('api e2e', ()=>{
       request.put(`/api/notes/${note1._id}`)
         .send(update)
         .then(res =>{
-          assert.equal(res.body, 'Note updated');
+          //updating what's stored in note1
+          note1.title = 'New Note 1';
+          note1.body = 'stuff';
+          note1.important = false;
+          assert.include(res.body, note1);
           done();
         })
         .catch(done);
@@ -83,7 +87,7 @@ describe('api e2e', ()=>{
     it('deletes note 1', done=>{
       request.delete(`/api/notes/${note1._id}`)
         .then(res =>{
-          assert.equal(res.body, 'Note deleted');
+          assert.include(res.body, note1);
           done();
         })
         .catch(done);
@@ -135,7 +139,9 @@ describe('api e2e', ()=>{
       request.put(`/api/authors/${author1._id}`)
         .send(update)
         .then(res =>{
-          assert.equal(res.body, 'Author profile updated');
+          author1.name = 'newAuthor1';
+          author1.email = 'author1@gmail.com';
+          assert.include(res.body, author1);
           done();
         })
         .catch(done);
@@ -144,7 +150,7 @@ describe('api e2e', ()=>{
     it('deletes author 1', done=>{
       request.delete(`/api/authors/${author1._id}`)
         .then(res =>{
-          assert.equal(res.body, 'Author deleted');
+          assert.include(res.body, author1);
           done();
         })
         .catch(done);
