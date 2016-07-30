@@ -1,0 +1,25 @@
+require( '../lib/setup-mongoose' );
+const Author = require( '../lib/models/author' );
+const Note = require( '../lib/models/note' );
+
+// describe('note author relationship model', ()=>{
+//
+// 	it('adds authorId to a new note', done=>{
+//
+//
+// });
+
+// const testAuthor = new Author({name:'Test author', email:'test@test.com'});
+// console.log(testAuthor._id);
+// Author.findOne({ name: 'Test author' })
+// 	.select()
+// 	.lean()
+// 	.then(author => {
+// 		return new Note({
+// 			title: 'Test Note 1',
+// 			body: 'body info here',
+// 			authorId: testAuthor._id
+// 		}).save();
+// 	})
+// 	.then(note => console.log(note))
+// 	.catch(err => console.log(err));
