@@ -157,7 +157,7 @@ describe('api e2e', ()=>{
 
   });
 
-  describe('relationship api', ()=>{
+  describe('note/author relationship api', ()=>{
     //db is cleared out at this point, so adding more test data
     const note2 = {
       title: 'note2',
@@ -206,6 +206,26 @@ describe('api e2e', ()=>{
           done();
         })
         .catch(done);
+    });
+
+    it('gets count of how many notes author2 wrote', done=>{
+      request.get(`/api/authors/${author2._id}/countNotes`)
+      .then(res=>{
+        assert.equal(res.body, 1);
+        done();
+      })
+      .catch(done);
+    });
+
+    it('gets title and body of notes written by author2', done=>{
+      request.get(`/api/authors/${author2._id}/notes`)
+      .then(res=>{
+        const note = res.body[0];
+        assert.equal(note.title, note2.title);
+        assert.equal(note.body, note2.body);
+        done();
+      })
+      .catch(done);
     });
 
     it('removes author2 id from note2', done=>{
