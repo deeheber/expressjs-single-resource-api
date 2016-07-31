@@ -35,6 +35,8 @@ This is an http server that stores notes and author data in MongoDB using Mongoo
 # Author and Note relationship
 - `PUT /api/authors/:authorId/notes/:noteId` adds an author to a note
 - `DELETE /api/authors/null/notes/:noteId` removes the author from a note
+- `GET /api/authors/:authorId/countNotes` counts the number of notes written by that author
+- `GET /api/authors/notes` returns the title and body for every note written by that author
 
 # Misc things to keep in mind
 - `GET` will only return items if they exist in the database

@@ -1,6 +1,12 @@
 # Change log
 All notable changes to this project will be documented in this file
 
+## 3.4.0 - 2016-07-31
+Added
+- Two new GET methods
+  - retrieve count of notes by a specific author   
+  - retrieve title and body for every note written by a specific author
+
 ## 3.3.0 - 2016-07-30
 Added
 - Parent child relationship between Author(parent) and Notes(children)
