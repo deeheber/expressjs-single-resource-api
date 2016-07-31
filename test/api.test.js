@@ -42,8 +42,6 @@ describe('api e2e', ()=>{
     it('gets all notes', done=>{
       request.get('/api/notes')
         .then(res => {
-          //can't guess the id Mongo will assign
-          //making sure note1 contents are in the response body
           assert.include(res.body, note1);
           done();
         })
