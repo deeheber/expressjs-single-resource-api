@@ -17,6 +17,8 @@ describe('api e2e', ()=>{
 
   const request = chai.request(app);
 
+  //TODO create a user => get token => use token in the header for each request
+  
   describe('note api', ()=>{
 
     const note1 = {
