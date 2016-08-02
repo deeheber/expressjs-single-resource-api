@@ -17,6 +17,10 @@ This is an http server that stores notes and author data in MongoDB using Mongoo
 
 ### API Calls
 
+User Signup and Authentication
+- `POST /api/auth/signup` creates a new user account and generates a token to access other routes
+- `POST /api/auth/signin` returns token to use on routes that require authentication
+
 Notes
 - `GET /api/notes` returns all notes
 - `GET /api/notes/:id` returns a note by id
@@ -32,18 +36,17 @@ Authors
 - `PUT /api/authors/:id` updates an author
 - `DELETE /api/authors/:id` deletes the selected author
 
-Author and Note relationship
+Author/Note
 - `PUT /api/authors/:authorId/notes/:noteId` adds an author to a note
 - `DELETE /api/authors/null/notes/:noteId` removes the author from a note
 - `GET /api/authors/:authorId/countNotes` counts the number of notes written by that author
 - `GET /api/authors/notes` returns the title and body for every note written by that author
 
 Misc things to keep in mind
+- You must sign up and place the token you receive on signup in the header request in order to access notes, authors, and author/note routes.
+- You cannot sign up with a username that already exists in the system
 - `GET` will only return items if they exist in the database
 - `POST` and `PUT` request bodies must be valid JSON.
-
-### Coming soon
-- Authentication and user management
 
 ### Ways to contribute
 - Report any bugs or feature requests by opening up a new GitHub issue

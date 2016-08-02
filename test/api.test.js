@@ -47,7 +47,7 @@ describe('api e2e', ()=>{
 
     it('signs up a new user and generates token', done=>{
       request.post('/api/auth/signup')
-        .send(JSON.stringify(testUser))
+        .send(testUser)
         .then(res => {
           token = res.body.token;
           assert.ok(res.body.token);
@@ -77,7 +77,7 @@ describe('api e2e', ()=>{
 
     it('signin works with valid username/password', done=>{
       request.post('/api/auth/signin')
-        .send(JSON.stringify(testUser))
+        .send(testUser)
         .then(res =>{
           assert.ok(res.body.token);
         })
