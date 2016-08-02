@@ -49,7 +49,6 @@ describe('api e2e', ()=>{
 
     it('signs up a new user and generates token', done=>{
       request.post('/api/auth/signup')
-        .set('content-type', 'application-json')
         .send(JSON.stringify(testUser))
         .then(res => {
           token = res.body.token;
@@ -60,6 +59,31 @@ describe('api e2e', ()=>{
 
     it('no duplicate usernames allowed on signup', done=>{
       badRequest( '/api/auth/signup', testUser, done );
+    });
+
+    it('requires password on signin', done=>{
+      badRequest('/api/auth/signin', {username: 'testUser'}, done);
+    });
+
+    it('requires username on signin', done=>{
+      badRequest('/api/auth/signin', {password: 'abc'}, done);
+    });
+
+    it('signin fails on invalid password', done=>{
+      badRequest('/api/auth/signin', {username: 'testUser', password: 'wrongpassword'}, done);
+    });
+
+    it('signin requires a registered user with valid password', done=>{
+      badRequest('/api/auth/signin', {username: 'fake user', password: '123'}, done);
+    });
+
+    it('signin works with valid username/password', done=>{
+      request.post('/api/auth/signin')
+        .send(JSON.stringify(testUser))
+        .then(res =>{
+          assert.ok(res.body.token);
+        })
+        .then(done, done);
     });
 
   });
