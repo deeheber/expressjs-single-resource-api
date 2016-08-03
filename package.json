@@ -1,6 +1,6 @@
 {
   "name": "express-mongo-rest-api",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "This is an http server that stores notes and author data in MongoDB using Mongoose.",
   "main": "index.js",
   "directories": {
