@@ -1,6 +1,9 @@
 html
   head
-    All Notes
+    link(href='/static/css/main.css', rel='stylesheet')
   body
-      p= title
-      p= body
+    h2= 'All notes'
+
+    each note in notes
+      p(class="test")= note.title
+      p= note.body
